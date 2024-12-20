@@ -109,7 +109,7 @@ END
 ``` 
 # Figma Screens
 # G ![alt text](image-1.png)
-# VG: ![alt text](image.png)
+# VG![alt text](image.png)
 # FigJam-FlowChart 
 [FigJam-länk](https://www.figma.com/board/4XlI7H7LYmVJgLRe3YyqPS/Untitled?node-id=4-115&t=JZrQiQI2StqDKHVT-1) 
 #
