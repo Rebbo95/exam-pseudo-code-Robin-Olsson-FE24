@@ -16,12 +16,20 @@ antal_vänner = antal vänner som skall dela på notan
 
 START
 
-Notan = Utan_Dricks * Dricks
 
-Delad_summa = Nota/antal_vänner
+INPUT Utan_Dricks // Matar in summan av notan utan dricks
+INPUT Dricks // Matar in dricks i decimalform (exempelvis 0.10 för 10%)
+INPUT antal_vänner // Matar in antal vänner som ska dela på notan
+    
+CALCULATE Notan = Utan_Dricks + (Utan_Dricks * Dricks) // Beräknar totala summan + drics
+CALCULATE Delad_summa = Notan / antal_vänner // Beräknar summan som varje vän skall betala
+    
+PRINT "Varje vän betalar: " + Delad_summa // Visar resultatet på skärmen
 
-console.log(Varje vänn betalar delad summa utav Notan)
 
+
+END
+**
 
 
 END
@@ -68,33 +76,32 @@ O,I
 
 
  SETUP
- Set Array Ordbok = {FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE}
- CurrentWord = "Four" and SlutOrd = "Five".
-
+Set StartOrd = Four
+SET SlutOrd = Five // Målet
+SET OrdBok =  {FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE}
+ 
 START
-//WHILE LOOP//
-While CurrentWord is not SlutOrd;
- FOR i FROM 1 TO the LENGTH of CurrentWord - 1: // Börja från position 1
-   FOR Every Letter in alfabetet from 'A' to 'Z':
-    Replace Letter on index (1) i CurrentWord with bokstav
-    SET New_Word = The newly found word
-   
 
-    If new word is in the OrdBok and is not the CurrentWord
-       SET New_Word to the CurrentWord
-       console.log("The word is CurrentWord and is in the OrdBok)
-       Break // eller inte om du vill forsätta utan att starta om manuellt.
+SET CurrentWord = StartOrd // startordet (Four) är nu start punkten
 
-    
-    Else
-    //go back to the next letter in the alfabetet
-    Continue.
-       
+WHILE CurrentWord is not equal to SlutOrd:
+    FOR i FROM 1 TO LENGTH(CurrentWord) - 1: // Iterera över bostaverna i ordet, börjar med position 1, baserat på längden av ordet, deta fall har alla 4 bokstäver.
+        FOR Each Letter IN alfabetet FROM 'A' TO 'Z': // Testa varje bokstav igenom alfabetet
+            SET New_Word = CurrentWord with Letter at position i replaced // Skapa nytt ord
+            
+            IF New_Word is in OrdBok AND New_Word is not equal to CurrentWord:
+                SET CurrentWord = New_Word // Uppdatera CurrentWord till det nya ordet
+                console.log("The word is: " + CurrentWord + " and it is in the OrdBok")
+                Break // kanske inte behövs då end if finns,  lägger deb här ändå.
+            ENDIF
+        END FOR // Fortsätt till nästa bokstav i alfabetet, detta gör så att det blir en i taget.
+    END FOR // Fortsätt till nästa position i ordet, en bokstav i taget.
+ENDWHILE  // när Ordet är lika med Slut ordet.
 
-//Medelandet är utanför loopen vilket menas med att slut ordet har hittats!
-Console.log("You did it Jesper, gratz! sorry för svengelskan GODJUL och GottNyttÅR!")
+// När slutordet har hittats
+console.log("You did it Jesper, gratz! Sorry för svengelskan. GOD JUL och Gott Nytt År!")
+
 END
-
       
 
 
